@@ -419,7 +419,7 @@ func SyncerSetUidStatuses() []SyncerSetUidStatus {
 	}
 }
 
-// MetricsEngine is a generic interface to record PBS metrics into the desired backend
+// MetricsEngine is a generic interface to record PBS metrics into the desired backend.
 // The first three metrics function fire off once per incoming request, so total metrics
 // will equal the total number of incoming requests. The remaining 5 fire off per outgoing
 // request to a bidder adapter, so will record a number of hits per incoming request. The
