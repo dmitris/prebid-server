@@ -244,6 +244,7 @@ func TestMakeBids(t *testing.T) {
 
 }
 
+//nolint:staticcheck // false positive SA5011: possible nil pointer dereference
 func checkBidResponse(t *testing.T, bidderResponse *adapters.BidderResponse, expectedCurrency string) {
 	if bidderResponse == nil {
 		t.Errorf("actual bidResponse is nil.")
@@ -259,7 +260,6 @@ func checkBidResponse(t *testing.T, bidderResponse *adapters.BidderResponse, exp
 	var expectedCrID string = "Dummy_supership.jp"
 	var extectedDealID string = "test-deal-id"
 
-	//nolint: staticcheck // false positive SA5011: possible nil pointer dereference
 	assert.Equal(t, expectedCurrency, bidderResponse.Currency)
 	assert.Equal(t, 1, len(bidderResponse.Bids))
 	assert.Equal(t, expectedID, bidderResponse.Bids[0].Bid.ID)

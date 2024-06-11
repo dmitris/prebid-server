@@ -37,6 +37,7 @@ import (
 	"github.com/prebid/prebid-server/v2/version"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/require"
 )
 
 // TestSingleBidder makes sure that the following things work if the Bidder needs only one request.
@@ -1065,7 +1066,7 @@ func TestMultiCurrencies_RateConverterNotSet(t *testing.T) {
 		seatBid := seatBids[0]
 
 		// Verify:
-		assert.Falsef(t, seatBid == nil && tc.expectedBidsCount != 0, tc.description)
+		require.NotNilf(t, seatBid, tc.description)
 		assert.Equal(t, tc.expectedBidsCount, uint(len(seatBid.Bids)), tc.description)
 		assert.ElementsMatch(t, tc.expectedBadCurrencyErrors, errs, tc.description)
 		assert.False(t, extraBidderRespInfo.respProcessingStartTime.IsZero())
